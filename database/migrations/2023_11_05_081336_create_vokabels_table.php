@@ -12,8 +12,12 @@ return new class () extends Migration {
     {
         Schema::create('vocables', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->cascadeOnDelete();
             $table->string('foreign_term')->unique();
-            $table->string('native_term')->unique();
+            $table->string('native_term');
             $table->timestamps();
             $table->unsignedTinyInteger('level')->default(0);
         });
