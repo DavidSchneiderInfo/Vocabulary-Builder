@@ -31,9 +31,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('train') }}">Train</a>
-                            </li>
+                            @if($user->vocablesCount>0)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('train') }}">Train</a>
+                                </li>
+                            @endif
                         @endauth
                     </ul>
 
