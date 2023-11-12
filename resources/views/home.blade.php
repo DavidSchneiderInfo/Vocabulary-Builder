@@ -21,9 +21,10 @@
                         </a>
                     @else
                         {{ __('You have :total vocables. :remaining vocables are waiting for your training.', ['total' => $total, 'remaining' => $remaining]) }}
+
+                        <a href="{{ route('train') }}">{{ __('Start now') }}</a>.
                     @endif
 
-                    <a href="{{ route('train') }}">{{ __('Start now') }}</a>.
                 </div>
             </div>
         </div>
