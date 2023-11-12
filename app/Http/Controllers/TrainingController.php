@@ -15,6 +15,7 @@ final class TrainingController extends Controller
     {
         $level = $request->get('level');
         $vocableQuery = Vocable::query()
+            ->where('level', '<=', '7')
             ->inRandomOrder();
 
         if ($level !== null) {

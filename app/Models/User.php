@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property int $vocablesCount
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
@@ -49,5 +52,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function vocables(): HasMany
     {
         return $this->hasMany(Vocable::class);
+    }
+
+    public function incrementVocables()
+    {
+        $this->increment('vocables');
+    }
+
+    public function getVocablesCountAttribute(): int
+    {
+        return (int)$this->attributes['vocables'];
     }
 }

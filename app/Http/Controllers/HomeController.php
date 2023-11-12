@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vocable;
+use App\Actions\Vocables\GetVocableStats;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
@@ -12,7 +12,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        private readonly GetVocableStats $getVocableStats
+    )
     {
         $this->middleware('auth');
     }
@@ -24,13 +26,7 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        $total = Vocable::query()->count();
-        $remaining = Vocable::query()
-            ->where('level', '=', 0)
-            ->count();
-
         return view('home')
-            ->with('remaining', $remaining)
-            ->with('total', $total);
+            ->with($this->getVocableStats->execute());
     }
 }

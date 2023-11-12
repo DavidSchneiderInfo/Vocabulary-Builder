@@ -14,13 +14,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You have :total vocables. :remaining vocables are waiting for your training.', ['total' => $total, 'remaining' => $remaining]) }}
 
-                    <div>
-                        {{ __('Need training') }}: {{ $remaining }}
-                        {{ __('Total') }}: {{ $total }}
-                    </div>
-
+                    <a href="{{ route('train') }}">{{ __('Start now') }}</a>.
                 </div>
             </div>
         </div>

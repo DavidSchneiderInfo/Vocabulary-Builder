@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SummaryController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\Vocables\AddVocableController;
 use App\Http\Controllers\Vocables\ShowVocablesController;
@@ -24,7 +24,7 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/', [
-        SummaryController::class,
+        LandingPageController::class,
         'show',
     ]);
 

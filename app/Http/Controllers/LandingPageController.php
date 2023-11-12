@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Vocable;
 use Illuminate\Contracts\View\View;
 
-final class SummaryController extends Controller
+final class LandingPageController extends Controller
 {
     public function show(): View
     {

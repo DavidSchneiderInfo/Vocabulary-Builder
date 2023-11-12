@@ -34,9 +34,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('train') }}">Train</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('vocables.index') }}">Vocables</a>
-                            </li>
                         @endauth
                     </ul>
 
@@ -62,6 +59,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('vocables.index') }}">
+                                        {{ __('Vocables') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
