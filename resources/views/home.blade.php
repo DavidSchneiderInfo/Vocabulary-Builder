@@ -14,7 +14,14 @@
                         </div>
                     @endif
 
-                    {{ __('You have :total vocables. :remaining vocables are waiting for your training.', ['total' => $total, 'remaining' => $remaining]) }}
+                    @if($total==0)
+                        {{ __('There is nothing to learn yet.') }}
+                        <a href="{{ route('vocables.create') }}">
+                            {{ __('You can start adding your first vocables here.') }}
+                        </a>
+                    @else
+                        {{ __('You have :total vocables. :remaining vocables are waiting for your training.', ['total' => $total, 'remaining' => $remaining]) }}
+                    @endif
 
                     <a href="{{ route('train') }}">{{ __('Start now') }}</a>.
                 </div>
