@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\Vocables\GetTrainableVocables;
 use App\Http\Requests\SubmitTrainingRequest;
 use App\Models\Vocable;
 use Illuminate\Contracts\View\View;
@@ -11,11 +12,15 @@ use Illuminate\Http\Request;
 
 final class TrainingController extends Controller
 {
+    public function __construct(
+        private readonly GetTrainableVocables $getTrainableVocables
+    ){}
     public function show(Request $request): View
     {
         $level = $request->get('level');
-        $vocableQuery = Vocable::query()
-            ->where('level', '<=', '7')
+
+        $vocableQuery = $this->getTrainableVocables
+            ->execute($request->user())
             ->inRandomOrder();
 
         if ($level !== null) {
